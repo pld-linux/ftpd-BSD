@@ -18,8 +18,8 @@ Patch2:		%{name}-username.patch
 Patch3:		%{name}-SA_LEN.patch
 Patch4:		%{name}-no_libnsl.patch
 URL:		http://www.eleves.ens.fr:8080/home/madore/programs/#prog_ftpd-BSD
-Buildrequires:	libwrap-devel
-Buildrequires:	pam-devel
+BuildRequires:	libwrap-devel
+BuildRequires:	pam-devel
 Requires:	rc-inetd
 Requires:	inetdaemon
 Requires:	pam >= 0.77.3

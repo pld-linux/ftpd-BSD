@@ -1,0 +1,11 @@
+--- ftpd-bsd-0.3.3/Makefile~	Mon Feb 26 18:23:06 2001
++++ ftpd-bsd-0.3.3/Makefile	Thu Jul 19 00:32:47 2001
+@@ -6,7 +6,7 @@
+ YACC = bison -y
+ 
+ CFLAGS = $(OPT_CFLAGS) $(EXTRA_CFLAGS) -DTCPWRAPPERS -DUSE_PAM -DAUTO_UNCOMPRESS -DINTERNAL_LS
+-LIBS = $(EXTRA_LIBS) -lutil -lwrap -lnsl -lcrypt -lpam -ldl
++LIBS = $(EXTRA_LIBS) -lutil -lwrap -lcrypt -lpam
+ ## If you prefer shadow password support, try this:
+ #CFLAGS = $(OPT_CFLAGS) $(EXTRA_CFLAGS) -DTCPWRAPPERS -DUSE_SHADOW -DAUTO_UNCOMPRESS -DINTERNAL_LS
+ #LIBS = $(EXTRA_LIBS) -lutil -lwrap -lnsl -lcrypt

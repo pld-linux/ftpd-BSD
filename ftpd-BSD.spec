@@ -32,6 +32,7 @@ Obsoletes:	proftpd-common
 Obsoletes:	proftpd-inetd
 Obsoletes:	proftpd-standalone
 Obsoletes:	pure-ftpd
+Obsoletes:	troll-ftpd
 Obsoletes:	vsftpd
 Obsoletes:	wu-ftpd
 

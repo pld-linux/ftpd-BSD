@@ -1,7 +1,7 @@
 Summary:	OpenBSD's ftpd ported to Linux (with IPv6 support)
 Name:		ftpd-BSD
 Version:	0.3.2
-Release:	3
+Release:	1
 License:	BSD-like
 Group:		Networking/Daemons
 Group(pl):	Sieciowe/Serwery

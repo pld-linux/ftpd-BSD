@@ -6,6 +6,7 @@ Release:	8
 License:	BSD-like
 Group:		Networking/Daemons
 Source0:	ftp://quatramaran.ens.fr/pub/madore/ftpd-BSD/contrib/%{name}-%{version}.tar.gz
+# Source0-md5:	db925235417c8699bb1eb8ca77811fc5
 Source1:	%{name}.inetd
 Source2:	%{name}.pamd
 Source3:	%{name}-ftpusers

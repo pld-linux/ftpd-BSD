@@ -1,7 +1,7 @@
 Summary:	OpenBSD's ftpd ported to Linux (with IPv6 support)
 Name:		ftpd-BSD
 Version:	0.3.2
-Release:	2
+Release:	3
 License:	BSD-like
 Group:		Networking/Daemons
 Group(pl):	Sieciowe/Serwery
@@ -14,7 +14,6 @@ Buildrequires:	libwrap-devel
 Buildrequires:	pam-devel
 Requires:	rc-inetd
 Requires:	inetdaemon
-Requires:	anonftp
 Provides:	ftpserver
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	wu-ftpd

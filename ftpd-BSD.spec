@@ -28,6 +28,7 @@ Provides:	ftpserver
 Obsoletes:	ftpserver
 Obsoletes:	anonftp
 Obsoletes:	bftpd
+Obsoletes:	glftpd
 Obsoletes:	heimdal-ftpd
 Obsoletes:	linux-ftpd
 Obsoletes:	muddleftpd

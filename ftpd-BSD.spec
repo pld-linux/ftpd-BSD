@@ -5,8 +5,6 @@ Version:	0.3.3
 Release:	2
 License:	BSD-like
 Group:		Networking/Daemons
-Group(de):	Netzwerkwesen/Server
-Group(pl):	Sieciowe/Serwery
 Source0:	ftp://quatramaran.ens.fr/pub/madore/ftpd-BSD/contrib/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Source2:	%{name}.pamd

@@ -62,6 +62,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.gz
 %attr(755,root,root) %{_sbindir}/ftpd-BSD
 %attr(640,root,root) %{_mandir}/man8/*
-%attr(640,root,root) /etc/pam.d/ftp
+%attr(640,root,root) %config %verify(not size mtime md5) /etc/pam.d/ftp
 %attr(640,root,root) /etc/ftpusers
 %attr(640,root,root) /etc/sysconfig/rc-inetd/ftp

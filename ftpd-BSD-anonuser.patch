@@ -28,14 +28,14 @@ diff -bruN ftpd-BSD-0.3.2/ftpd/ftpd.8 ftpd-BSD-0.3.2.new/ftpd/ftpd.8
  A client may also request a different timeout period;
  the maximum period allowed may be set to
 diff -bruN ftpd-BSD-0.3.2/ftpd/ftpd.c ftpd-BSD-0.3.2.new/ftpd/ftpd.c
---- ftpd-BSD-0.3.2/ftpd/ftpd.c	Wed Aug 16 13:44:29 2000
-+++ ftpd-BSD-0.3.2.new/ftpd/ftpd.c	Wed Aug 16 12:54:54 2000
+--- ftpd-BSD-0.3.2/ftpd/ftpd.c	Fri Jul  7 05:06:04 2000
++++ ftpd-BSD-0.3.2.new/ftpd/ftpd.c	Wed Aug 16 13:46:09 2000
 @@ -212,7 +212,7 @@
  off_t	byte_count;
  #if !defined(CMASK) || CMASK == 0
  #undef CMASK
--#define CMASK 022
-+#define CMASK 027
+-#define CMASK 027
++#define CMASK 022
  #endif
  int	defumask = CMASK;		/* default umask value */
  int	umaskchange = 1;		/* allow user to change umask value. */

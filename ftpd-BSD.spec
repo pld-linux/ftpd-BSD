@@ -42,14 +42,14 @@ tego portu to 0.3.0.
 %setup -q
 
 %build
-make
+( cd ftpd ; make )
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/{%{_sbindir},%{_mandir}/man8,etc/{pam.d,sysconfig/rc-inetd}}
 
-install -s ftpd 	$RPM_BUILD_ROOT%{_sbindir}/ftpd-BSD
-install ftpd.8		$RPM_BUILD_ROOT%{_mandir}/man8/
+install -s ftpd/ftpd 	$RPM_BUILD_ROOT%{_sbindir}/ftpd-BSD
+install ftpd/ftpd.8	$RPM_BUILD_ROOT%{_mandir}/man8/
 install %{SOURCE1} 	$RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/ftpd
 install %{SOURCE2} 	$RPM_BUILD_ROOT/etc/pam.d/ftp
 install %{SOURCE3} 	$RPM_BUILD_ROOT/etc/ftpusers

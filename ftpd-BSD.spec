@@ -1,8 +1,8 @@
 Summary:	OpenBSD's ftpd ported to Linux (with IPv6 support)
-Summary(pl):	Port ftpd z OpenBSD dla Linuxa (z wsparciem do IPv6)
+Summary(pl):	Port ftpd z OpenBSD dla Linuxa (z obs³ug± IPv6)
 Name:		ftpd-BSD
 Version:	0.3.3
-Release:	4
+Release:	5
 License:	BSD-like
 Group:		Networking/Daemons
 Source0:	ftp://quatramaran.ens.fr/pub/madore/ftpd-BSD/contrib/%{name}-%{version}.tar.gz
@@ -25,6 +25,9 @@ Obsoletes:	bftpd
 Obsoletes:	heimdal-ftpd
 Obsoletes:	linux-ftpd
 Obsoletes:	proftpd
+Obsoletes:	proftpd-common
+Obsoletes:	proftpd-inetd
+Obsoletes:	proftpd-standalone
 Obsoletes:	pure-ftpd
 Obsoletes:	wu-ftpd
 Obsoletes:	muddleftpd
@@ -77,8 +80,6 @@ install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/ftpd
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/pam.d/ftp
 install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/ftpd/ftpusers
 
-gzip -9nf README*
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -96,7 +97,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc README*.gz
+%doc README*
 %attr(755,root,root) %{_sbindir}/ftpd-BSD
 %dir %{_sysconfdir}/ftpd
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/pam.d/ftp

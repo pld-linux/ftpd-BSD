@@ -2,13 +2,14 @@ Summary:	OpenBSD's ftpd ported to Linux (with IPv6 support)
 Summary(pl):	Port ftpd z OpenBSD dla Linuxa (z obs³ug± IPv6)
 Name:		ftpd-BSD
 Version:	0.3.3
-Release:	6
+Release:	7
 License:	BSD-like
 Group:		Networking/Daemons
 Source0:	ftp://quatramaran.ens.fr/pub/madore/ftpd-BSD/contrib/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Source2:	%{name}.pamd
 Source3:	%{name}-ftpusers
+Source4:	ftpusers.tar.bz2
 Patch0:		%{name}-anonuser.patch
 Patch1:		%{name}-paths.patch
 Patch2:		%{name}-username.patch
@@ -35,6 +36,7 @@ Obsoletes:	pure-ftpd
 Obsoletes:	troll-ftpd
 Obsoletes:	vsftpd
 Obsoletes:	wu-ftpd
+Conflicts:	man-pages < 1.51
 
 %description
 This is a Linux port of the BSD ftp server (ftpd). It doesn't have all
@@ -84,6 +86,8 @@ install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/ftpd
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/pam.d/ftp
 install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/ftpd/ftpusers
 
+bzip2 -dc %{SOURCE4} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -111,3 +115,7 @@ fi
 %dir /home/ftp/pub
 %attr(700,root,ftp) %verify(not mode) %dir /home/ftp/upload
 %{_mandir}/man8/*
+%lang(ja) %{_mandir}/ja/man5/ftpusers*
+%lang(pl) %{_mandir}/pl/man5/ftpusers*
+%lang(pt_BR) %{_mandir}/pt_BR/man5/ftpusers*
+%lang(ru) %{_mandir}/ru/man5/ftpusers*

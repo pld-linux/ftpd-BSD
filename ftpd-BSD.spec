@@ -54,7 +54,7 @@ wersji ftpd to 6.4, za¶ numer wersji tego portu to 0.3.0.
 %patch2 -p1
 %patch3 -p1
 %build
-%{__make} -C ftpd OPT_CFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS}"
+%{__make} -C ftpd OPT_CFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS}"
 
 %install
 rm -rf $RPM_BUILD_ROOT

@@ -1,21 +1,22 @@
 Summary:	OpenBSD's ftpd ported to Linux (with IPv6 support)
 Summary(pl):	Port ftpd z OpenBSD dla Linuxa (z wsparciem do IPv6)
 Name:		ftpd-BSD
-Version:	0.3.2
-Release:	10
+Version:	0.3.3
+Release:	1
 License:	BSD-like
 Group:		Networking/Daemons
 Group(de):	Netzwerkwesen/Server
 Group(pl):	Sieciowe/Serwery
-Source0:	ftp://quatramaran.ens.fr/pub/madore/ftpd-BSD/%{name}-%{version}.tar.gz
+Source0:	ftp://quatramaran.ens.fr/pub/madore/ftpd-BSD/contrib/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Source2:	%{name}.pamd
 Source3:	%{name}-ftpusers
 Patch0:		%{name}-anonuser.patch
 Patch1:		%{name}-paths.patch
 Patch2:		%{name}-username.patch
-Patch3:		%{name}-overflow.patch
-Patch4:		%{name}-SA_LEN.patch
+Patch3:		%{name}-SA_LEN.patch
+Patch4:		ftpd-BSD-no_libnsl.patch
+URL:		http://www.eleves.ens.fr:8080/home/madore/programs/#prog_ftpd-BSD
 Buildrequires:	libwrap-devel
 Buildrequires:	pam-devel
 Requires:	rc-inetd
@@ -50,14 +51,15 @@ CVS OpenBSD z dnia 2000/01/23 (tj. miêdzy wersj± 2.6 a 2.7). Numer
 wersji ftpd to 6.4, za¶ numer wersji tego portu to 0.3.0.
 
 %prep
-%setup -q
+%setup -q -n ftpd-bsd-%{version}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+
 %build
-%{__make} -C ftpd OPT_CFLAGS="%{rpmcflags}"
+%{__make} OPT_CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -65,8 +67,8 @@ install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8} \
 	$RPM_BUILD_ROOT%{_sysconfdir}/{ftpd,pam.d,sysconfig/rc-inetd} \
 	$RPM_BUILD_ROOT/home/ftp/{upload,pub}
 
-install ftpd/ftpd $RPM_BUILD_ROOT%{_sbindir}/ftpd-BSD
-install ftpd/ftpd.8 $RPM_BUILD_ROOT%{_mandir}/man8/
+install ftpd $RPM_BUILD_ROOT%{_sbindir}/ftpd-BSD
+install ftpd.8 $RPM_BUILD_ROOT%{_mandir}/man8/
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/ftpd
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/pam.d/ftp
 install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/ftpd/ftpusers

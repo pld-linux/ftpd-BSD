@@ -57,7 +57,7 @@ enable it - chmod /home/services/ftp/upload to 0730.
 %description -l pl
 Pakiet ten zawiera linuksowy port serwera ftp BSD (ftpd). Nie zawiera
 on wszystkich wymy¶lnych elementów wu-ftpd, jest jednak
-prawdopodobniej mniej zapluskwiony i bardziej bezpieczny (w kazdym
+prawdopodobniej mniej zapluskwiony i bardziej bezpieczny (w ka¿dym
 razie by³ takim zanim go przenios³em na Linuksa, i mam nadziejê, ¿e
 nie naba³agani³em *za bardzo*). Kod ¼ród³owy pochodzi z repozytorium
 CVS OpenBSD z dnia 2000/07/07 (tj. po wersji 2.7). Numer wersji ftpd

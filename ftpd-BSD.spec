@@ -45,7 +45,7 @@ Obsoletes:	wu-ftpd
 Conflicts:	man-pages < 1.51
 
 %description
-This is a Linux port of the BSD ftp server (ftpd). It doesn't have all
+This is a Linux port of the BSD FTP server (ftpd). It doesn't have all
 the bells and whistles of wu-ftpd, but it is also probably less buggy
 and more secure (at least, it was certainly so before I ported it, and
 I hope I didn't mess things up *too* much).
@@ -58,7 +58,7 @@ Package comes with anonymous upload disabled. If you really want to
 enable it - chmod /home/services/ftp/upload to 0730.
 
 %description -l pl
-Pakiet ten zawiera linuksowy port serwera ftp BSD (ftpd). Nie zawiera
+Pakiet ten zawiera linuksowy port serwera FTP BSD (ftpd). Nie zawiera
 on wszystkich wymy¶lnych elementów wu-ftpd, jest jednak
 prawdopodobniej mniej zapluskwiony i bardziej bezpieczny (w ka¿dym
 razie by³ takim zanim go przenios³em na Linuksa, i mam nadziejê, ¿e

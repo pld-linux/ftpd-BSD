@@ -20,6 +20,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	wu-ftpd
 Obsoletes:	proftpd
 Obsoletes:	heimdal-ftpd
+Obsoletes:	linux-ftpd
 
 %description
 This is a Linux port of the BSD ftp server (ftpd). It doesn't have all

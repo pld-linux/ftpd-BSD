@@ -22,6 +22,7 @@ Buildrequires:	libwrap-devel
 Buildrequires:	pam-devel
 Requires:	rc-inetd
 Requires:	inetdaemon
+Requires:	pam >= 0.77.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Provides:	ftpserver
 Obsoletes:	ftpserver

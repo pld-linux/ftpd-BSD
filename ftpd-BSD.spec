@@ -1,3 +1,5 @@
+# TODO:
+# - SECURITY: http://securitytracker.com/alerts/2004/Aug/1010968.html
 Summary:	OpenBSD's ftpd ported to Linux (with IPv6 support)
 Summary(pl):	Port ftpd z OpenBSD dla Linuksa (z obs³ug± IPv6)
 Name:		ftpd-BSD

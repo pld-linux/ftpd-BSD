@@ -1,0 +1,76 @@
+diff -bruN ftpd-BSD-0.3.2/ftpd/ftpd.8 ftpd-BSD-0.3.2.new/ftpd/ftpd.8
+--- ftpd-BSD-0.3.2/ftpd/ftpd.8	Wed Aug 16 13:02:00 2000
++++ ftpd-BSD-0.3.2.new/ftpd/ftpd.8	Thu Jul  6 18:24:17 2000
+@@ -114,10 +114,6 @@
+ and requires it use the same source address as the connection came from.
+ This prevents the "FTP bounce attack" against services on both the local
+ machine and other local machines.
+-.It Fl q
+-Prevent
+-.Nm ftpd
+-from displaying program name and version at the connection startup.
+ .It Fl S
+ With this option set,
+ .Nm ftpd
+@@ -131,14 +127,6 @@
+ .Pa /var/run/utmp ,
+ making them visible to commands such as
+ .Xr who 1 .
+-.It Fl z Ar username
+-Use specified
+-.Ar username
+-as anonymous
+-.Xr ftp 1
+-user, instead of default
+-.Pa ftp
+-.
+ .It Fl T Ar maxtimeout
+ A client may also request a different timeout period;
+ the maximum period allowed may be set to
+diff -bruN ftpd-BSD-0.3.2/ftpd/ftpd.c ftpd-BSD-0.3.2.new/ftpd/ftpd.c
+--- ftpd-BSD-0.3.2/ftpd/ftpd.c	Fri Jul  7 05:06:04 2000
++++ ftpd-BSD-0.3.2.new/ftpd/ftpd.c	Wed Aug 16 12:54:54 2000
+@@ -248,6 +248,9 @@
+ #endif /* USE_PAM */
+ #endif /* not ORIGINAL_SOURCE */
+ 
++#ifndef ORIGINAL_SOURCE
++char	*anon_ftp_user = "ftp";
++#endif
+ 
+ int epsvall = 0;
+ 
+@@ -336,7 +339,7 @@
+ #ifdef ORIGINAL_SOURCE
+ char *argstr = "AdDhlMSt:T:u:UvP46";
+ #else
+-char *argstr = "AdDhlMqSt:T:u:UvP46";
++char *argstr = "AdDhlMqSt:T:u:UvP46z:";
+ #endif /* not ORIGINAL_SOURCE */
+ 
+ static void
+@@ -450,6 +453,12 @@
+ 			family = AF_INET6;
+ 			break;
+ 
++#ifndef ORIGINAL_SOURCE
++		case 'z':
++			anon_ftp_user = strdup(optarg);
++			break;
++#endif
++
+ 		default:
+ 			usage();
+ 			break;
+@@ -837,7 +846,11 @@
+ 		if (checkuser(_PATH_FTPUSERS, "ftp") ||
+ 		    checkuser(_PATH_FTPUSERS, "anonymous"))
+ 			reply(530, "User %s access denied.", name);
++#ifdef ORIGINAL_SOURCE
+ 		else if ((pw = sgetpwnam("ftp")) != NULL) {
++#else
++		else if ((pw = sgetpwnam(anon_ftp_user)) != NULL) {
++#endif
+ 			guest = 1;
+ 			askpasswd = 1;
+ 			reply(331,

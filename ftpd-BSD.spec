@@ -33,7 +33,7 @@ port's version number is 0.3.0.
 Pakiet ten zawiera linuksowy port serwera ftp BSD (ftpd). Nie zawiera on 
 wszystkich wymy¶lnych elementów wu-ftpd, jest jednak prawdopodobniej mniej
 zapluskwiony i bardziej bezpieczny (w kazdym razie by³ takim zanim go
-przenieos³em na Linuksa, i mam nadziejê, ¿e nie naba³agani³em *za bardzo*).
+przenios³em na Linuksa, i mam nadziejê, ¿e nie naba³agani³em *za bardzo*).
 Kod ¼ród³owy pochodzi z repozytorium CVS OpenBSD z dnia 2000/01/23 (tj.
 miêdzy wersj± 2.6 a 2.7). Numer wersji ftpd to 6.4, za¶ numer wersji
 tego portu to 0.3.0.

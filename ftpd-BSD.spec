@@ -1,12 +1,13 @@
-Summary:	OpenBSD's ftpd ported to Linux
+Summary:	OpenBSD's ftpd ported to Linux (with IPv6 support)
 Name:		ftpd-BSD
-Version:	0.2.3
+Version:	0.3.0
 Release:	1
 License:	BSD-like
 Group:		Networking/Daemons
 Source0:	%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Source2:	%{name}.pamd
+Source3:	%{name}-ftpusers
 BuildRoot:	/tmp/%{name}-%{version}-root
 Requires:	rc-inetd
 Requires:	inetdaemon
@@ -19,8 +20,9 @@ all the bells and whistles of wu-ftpd, but it is also probably less
 buggy and more secure (at least, it was certainly so before I ported
 it, and I hope I didn't mess things up *too* much).
 
-The source code was taken from the OpenBSD 2.6 distribution.  The ftpd
-version number is 6.4 and this port's version number is 0.2.3.
+The source code was taken from the OpenBSD CVS as of 2000/01/23 (this
+is between releases 2.6 and 2.7).  The ftpd version number is 6.4 and
+this port's version number is 0.3.0.
 
 %prep
 %setup -q
@@ -36,36 +38,20 @@ install -s ftpd 	$RPM_BUILD_ROOT%{_sbindir}/ftpd-BSD
 install ftpd.8		$RPM_BUILD_ROOT%{_mandir}/man8/ftpd-BSD.8
 install %{SOURCE1} 	$RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/ftp
 install %{SOURCE2} 	$RPM_BUILD_ROOT/etc/pam.d/ftp
+install %{SOURCE3} 	$RPM_BUILD_ROOT/etc/ftpusers
 
 gzip -9nf README $RPM_BUILD_ROOT%{_mandir}/man8/*
 
-cat << EOF >$RPM_BUILD_ROOT/etc/ftpusers
-root
-bin
-daemon
-adm
-lp
-sync
-shutdown
-halt
-mail
-news
-uucp
-operator
-games
-nobody
-EOF
-
 %post
 if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd restart 1>&2
+	/etc/rc.d/init.d/rc-inetd reload 1>&2
 else
 	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet sever" 1>&2
 fi
 
 %postun
 if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd restart
+	/etc/rc.d/init.d/rc-inetd reload
 fi
 
 %clean

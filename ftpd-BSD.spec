@@ -2,7 +2,7 @@ Summary:	OpenBSD's ftpd ported to Linux (with IPv6 support)
 Summary(pl):	Port ftpd z OpenBSD dla Linuxa (z wsparciem do IPv6)
 Name:		ftpd-BSD
 Version:	0.3.2
-Release:	9
+Release:	10
 License:	BSD-like
 Group:		Networking/Daemons
 Group(de):	Netzwerkwesen/Server
@@ -15,6 +15,7 @@ Patch0:		%{name}-anonuser.patch
 Patch1:		%{name}-paths.patch
 Patch2:		%{name}-username.patch
 Patch3:		%{name}-overflow.patch
+Patch4:		%{name}-SA_LEN.patch
 Buildrequires:	libwrap-devel
 Buildrequires:	pam-devel
 Requires:	rc-inetd
@@ -27,6 +28,7 @@ Obsoletes:	linux-ftpd
 Obsoletes:	proftpd
 Obsoletes:	pure-ftpd
 Obsoletes:	wu-ftpd
+Obsoletes:	muddleftpd
 
 %description
 This is a Linux port of the BSD ftp server (ftpd). It doesn't have all
@@ -53,8 +55,9 @@ wersji ftpd to 6.4, za¶ numer wersji tego portu to 0.3.0.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 %build
-%{__make} -C ftpd OPT_CFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS}"
+%{__make} -C ftpd OPT_CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT

@@ -1,0 +1,14 @@
+--- ftpd-BSD-0.3.2/ftpd/ftpd.c.orig	Thu Apr  5 16:45:08 2001
++++ ftpd-BSD-0.3.2/ftpd/ftpd.c	Thu Apr  5 16:55:57 2001
+@@ -300,6 +300,11 @@
+ 	}
+ #endif /* ORIGINAL_SOURCE */
+ 
++#ifndef SA_LEN
++#define SA_LEN(x) (((x)->sa_family == AF_INET6) ? sizeof(struct sockaddr_in6) : \
++		(((x)->sa_family == AF_INET)?sizeof(struct sockaddr_in):sizeof(struct sockaddr)))
++#endif
++
+ static void	 ack __P((char *));
+ static void	 myoob __P((int));
+ static int	 checkuser __P((char *, char *));

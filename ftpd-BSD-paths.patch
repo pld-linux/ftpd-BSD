@@ -1,0 +1,68 @@
+diff -urN ftpd-BSD-0.3.2.orig/ftpd/logutmp.c ftpd-BSD-0.3.2/ftpd/logutmp.c
+--- ftpd-BSD-0.3.2.orig/ftpd/logutmp.c	Fri Jul  7 03:28:18 2000
++++ ftpd-BSD-0.3.2/ftpd/logutmp.c	Sun Sep 10 01:58:51 2000
+@@ -43,6 +43,13 @@
+ #include <string.h>
+ #include <ttyent.h>
+ 
++#define TRANSFORM_UTMP_FILE_NAME(file_name) \
++	 ((strcmp (file_name, _PATH_UTMP) == 0 \
++	   && access ( _PATH_UTMP "x", F_OK) == 0) ? (_PATH_UTMP "x") : \
++	  ((strcmp (file_name, _PATH_UTMP "x") == 0 \
++	    && access (_PATH_UTMP "x", F_OK) != 0) ? _PATH_UTMP : \
++	   file_name))
++
+ typedef struct utmp UTMP;
+ 
+ static int fd = -1;
+@@ -73,7 +80,7 @@
+ 			topslot++;
+ 	}
+ 	if ((topslot < 0) || ((fd < 0) &&
+-	    (fd = open(_PATH_UTMP, O_RDWR|O_CREAT, 0644)) < 0))
++	    (fd = open(TRANSFORM_UTMP_FILE_NAME(_PATH_UTMP), O_RDWR|O_CREAT, 0644)) < 0))
+ 	    	return;
+ 
+ 	/*
+diff -urN ftpd-BSD-0.3.2.orig/ftpd/logwtmp.c ftpd-BSD-0.3.2/ftpd/logwtmp.c
+--- ftpd-BSD-0.3.2.orig/ftpd/logwtmp.c	Fri Jul  7 05:04:09 2000
++++ ftpd-BSD-0.3.2/ftpd/logwtmp.c	Sun Sep 10 01:58:34 2000
+@@ -55,6 +55,13 @@
+ #include <netinet/in.h>
+ #include "extern.h"
+ 
++#define TRANSFORM_WTMP_FILE_NAME(file_name) \
++	 ((strcmp (file_name, _PATH_WTMP) == 0 \
++	   && access ( _PATH_WTMP "x", F_OK) == 0) ? (_PATH_WTMP "x") : \
++	  ((strcmp (file_name, _PATH_WTMP "x") == 0 \
++	    && access (_PATH_WTMP "x", F_OK) != 0) ? _PATH_WTMP : \
++	   file_name))
++
+ static int fd = -1;
+ 
+ /*
+@@ -69,7 +76,7 @@
+ 	struct utmp ut;
+ 	struct stat buf;
+ 
+-	if (fd < 0 && (fd = open(_PATH_WTMP, O_WRONLY|O_APPEND, 0)) < 0)
++	if (fd < 0 && (fd = open(TRANSFORM_WTMP_FILE_NAME(_PATH_WTMP), O_WRONLY|O_APPEND, 0)) < 0)
+ 		return;
+ 	if (fstat(fd, &buf) == 0) {
+ #ifndef ORIGINAL_SOURCE
+diff -urN ftpd-BSD-0.3.2.orig/ftpd/pathnames.h ftpd-BSD-0.3.2/ftpd/pathnames.h
+--- ftpd-BSD-0.3.2.orig/ftpd/pathnames.h	Sun Jan 23 15:20:36 2000
++++ ftpd-BSD-0.3.2/ftpd/pathnames.h	Sun Sep 10 01:53:54 2000
+@@ -38,9 +38,9 @@
+ 
+ #include <paths.h>
+ 
+-#define	_PATH_FTPUSERS		"/etc/ftpusers"
+-#define	_PATH_FTPCHROOT		"/etc/ftpchroot"
+-#define	_PATH_FTPWELCOME	"/etc/ftpwelcome"
++#define	_PATH_FTPUSERS		"/etc/ftpd/ftpusers"
++#define	_PATH_FTPCHROOT		"/etc/ftpd/ftpchroot"
++#define	_PATH_FTPWELCOME	"/etc/ftpd/ftpwelcome"
+ #define	_PATH_FTPLOGINMESG	"/etc/motd"
+ #define _PATH_FTPDSTATFILE	"/var/log/ftpd"
+ #define _PATH_FTPDPID		"/var/run/ftpd.pid"

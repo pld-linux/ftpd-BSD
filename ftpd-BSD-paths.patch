@@ -1,6 +1,6 @@
-diff -urN ftpd-BSD-0.3.2.orig/ftpd/logutmp.c ftpd-BSD-0.3.2/ftpd/logutmp.c
---- ftpd-BSD-0.3.2.orig/ftpd/logutmp.c	Fri Jul  7 03:28:18 2000
-+++ ftpd-BSD-0.3.2/ftpd/logutmp.c	Sun Sep 10 01:58:51 2000
+diff -urN ftpd-BSD-0.3.2.orig/logutmp.c ftpd-BSD-0.3.2/logutmp.c
+--- ftpd-BSD-0.3.2.orig/logutmp.c	Fri Jul  7 03:28:18 2000
++++ ftpd-BSD-0.3.2/logutmp.c	Sun Sep 10 01:58:51 2000
 @@ -43,6 +43,13 @@
  #include <string.h>
  #include <ttyent.h>
@@ -24,9 +24,9 @@ diff -urN ftpd-BSD-0.3.2.orig/ftpd/logutmp.c ftpd-BSD-0.3.2/ftpd/logutmp.c
  	    	return;
  
  	/*
-diff -urN ftpd-BSD-0.3.2.orig/ftpd/logwtmp.c ftpd-BSD-0.3.2/ftpd/logwtmp.c
---- ftpd-BSD-0.3.2.orig/ftpd/logwtmp.c	Fri Jul  7 05:04:09 2000
-+++ ftpd-BSD-0.3.2/ftpd/logwtmp.c	Sun Sep 10 01:58:34 2000
+diff -urN ftpd-BSD-0.3.2.orig/logwtmp.c ftpd-BSD-0.3.2/logwtmp.c
+--- ftpd-BSD-0.3.2.orig/logwtmp.c	Fri Jul  7 05:04:09 2000
++++ ftpd-BSD-0.3.2/logwtmp.c	Sun Sep 10 01:58:34 2000
 @@ -55,6 +55,13 @@
  #include <netinet/in.h>
  #include "extern.h"
@@ -50,9 +50,9 @@ diff -urN ftpd-BSD-0.3.2.orig/ftpd/logwtmp.c ftpd-BSD-0.3.2/ftpd/logwtmp.c
  		return;
  	if (fstat(fd, &buf) == 0) {
  #ifndef ORIGINAL_SOURCE
-diff -urN ftpd-BSD-0.3.2.orig/ftpd/pathnames.h ftpd-BSD-0.3.2/ftpd/pathnames.h
---- ftpd-BSD-0.3.2.orig/ftpd/pathnames.h	Sun Jan 23 15:20:36 2000
-+++ ftpd-BSD-0.3.2/ftpd/pathnames.h	Sun Sep 10 01:53:54 2000
+diff -urN ftpd-BSD-0.3.2.orig/pathnames.h ftpd-BSD-0.3.2/pathnames.h
+--- ftpd-BSD-0.3.2.orig/pathnames.h	Sun Jan 23 15:20:36 2000
++++ ftpd-BSD-0.3.2/pathnames.h	Sun Sep 10 01:53:54 2000
 @@ -38,9 +38,9 @@
  
  #include <paths.h>

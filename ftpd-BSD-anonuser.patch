@@ -1,6 +1,5 @@
-diff -bruN ftpd-BSD-0.3.2/ftpd/ftpd.8 ftpd-BSD-0.3.2.new/ftpd/ftpd.8
---- ftpd-BSD-0.3.2/ftpd/ftpd.8	Thu Jul  6 18:24:17 2000
-+++ ftpd-BSD-0.3.2.new/ftpd/ftpd.8	Wed Aug 16 13:17:26 2000
+--- ftpd-BSD-0.3.2/ftpd.8	Thu Jul  6 18:24:17 2000
++++ ftpd-BSD-0.3.2.new/ftpd.8	Wed Aug 16 13:17:26 2000
 @@ -114,6 +114,10 @@
  and requires it use the same source address as the connection came from.
  This prevents the "FTP bounce attack" against services on both the local
@@ -27,9 +26,9 @@ diff -bruN ftpd-BSD-0.3.2/ftpd/ftpd.8 ftpd-BSD-0.3.2.new/ftpd/ftpd.8
  .It Fl T Ar maxtimeout
  A client may also request a different timeout period;
  the maximum period allowed may be set to
-diff -bruN ftpd-BSD-0.3.2/ftpd/ftpd.c ftpd-BSD-0.3.2.new/ftpd/ftpd.c
---- ftpd-BSD-0.3.2/ftpd/ftpd.c	Fri Jul  7 05:06:04 2000
-+++ ftpd-BSD-0.3.2.new/ftpd/ftpd.c	Wed Aug 16 13:46:09 2000
+diff -bruN ftpd-BSD-0.3.2/ftpd.c ftpd-BSD-0.3.2.new/ftpd.c
+--- ftpd-BSD-0.3.2/ftpd.c	Fri Jul  7 05:06:04 2000
++++ ftpd-BSD-0.3.2.new/ftpd.c	Wed Aug 16 13:46:09 2000
 @@ -212,7 +212,7 @@
  off_t	byte_count;
  #if !defined(CMASK) || CMASK == 0

@@ -1,5 +1,5 @@
---- ftpd-BSD-0.3.2/ftpd/ftpd.c.orig	Thu Apr  5 16:45:08 2001
-+++ ftpd-BSD-0.3.2/ftpd/ftpd.c	Thu Apr  5 16:55:57 2001
+--- ftpd-BSD-0.3.2/ftpd.c.orig	Thu Apr  5 16:45:08 2001
++++ ftpd-BSD-0.3.2/ftpd.c	Thu Apr  5 16:55:57 2001
 @@ -300,6 +300,11 @@
  	}
  #endif /* ORIGINAL_SOURCE */

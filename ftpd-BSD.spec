@@ -49,7 +49,7 @@ is after release 2.7). The ftpd version number is 6.5 and this port's
 version number is 0.3.2.
 
 Package comes with anonymous upload disabled. If you really want to
-enable it - chmod /home/ftp/upload to 0730.
+enable it - chmod /home/services/ftp/upload to 0730.
 
 %description -l pl
 Pakiet ten zawiera linuksowy port serwera ftp BSD (ftpd). Nie zawiera
@@ -61,7 +61,8 @@ CVS OpenBSD z dnia 2000/07/07 (tj. po wersji 2.7). Numer wersji ftpd
 to 6.5, za¶ numer wersji tego portu to 0.3.2.
 
 Pakiet przychodzi z wy³±czonym anonimowym uploadem. Je¶li naprawdê
-chcesz go w³±czyæ - zmieñ uprawnienia do /home/ftp/upload na 0730.
+chcesz go w³±czyæ - zmieñ uprawnienia do /home/services/ftp/upload
+na 0730.
 
 %prep
 %setup -q -n ftpd-bsd-%{version}
@@ -78,7 +79,7 @@ chcesz go w³±czyæ - zmieñ uprawnienia do /home/ftp/upload na 0730.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8} \
 	$RPM_BUILD_ROOT%{_sysconfdir}/{ftpd,pam.d,sysconfig/rc-inetd} \
-	$RPM_BUILD_ROOT/home/ftp/{upload,pub}
+	$RPM_BUILD_ROOT/home/services/ftp/{upload,pub}
 
 install ftpd $RPM_BUILD_ROOT%{_sbindir}/ftpd-BSD
 install ftpd.8 $RPM_BUILD_ROOT%{_mandir}/man8/
@@ -111,9 +112,9 @@ fi
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/pam.d/ftp
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ftpd/ftpusers
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/rc-inetd/ftpd
-%dir /home/ftp
-%dir /home/ftp/pub
-%attr(700,root,ftp) %verify(not mode) %dir /home/ftp/upload
+%dir /home/services/ftp
+%dir /home/services/ftp/pub
+%attr(700,root,ftp) %verify(not mode) %dir /home/services/ftp/upload
 %{_mandir}/man8/*
 %lang(ja) %{_mandir}/ja/man5/ftpusers*
 %lang(pl) %{_mandir}/pl/man5/ftpusers*

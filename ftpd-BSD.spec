@@ -110,7 +110,7 @@ fi
 %dir %{_sysconfdir}/ftpd
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/pam.d/ftp
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ftpd/ftpusers
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/sysconfig/rc-inetd/ftpd
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/rc-inetd/ftpd
 %dir /home/ftp
 %dir /home/ftp/pub
 %attr(700,root,ftp) %verify(not mode) %dir /home/ftp/upload

@@ -2,7 +2,7 @@ Summary:	OpenBSD's ftpd ported to Linux (with IPv6 support)
 Summary(pl):	Port ftpd z OpenBSD dla Linuxa (z wsparciem do IPv6)
 Name:		ftpd-BSD
 Version:	0.3.2
-Release:	8
+Release:	9
 License:	BSD-like
 Group:		Networking/Daemons
 Group(de):	Netzwerkwesen/Server
@@ -21,11 +21,12 @@ Requires:	rc-inetd
 Requires:	inetdaemon
 Provides:	ftpserver
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Obsoletes:	wu-ftpd
-Obsoletes:	proftpd
+Obsoletes:	bftpd
 Obsoletes:	heimdal-ftpd
 Obsoletes:	linux-ftpd
-Obsoletes:	bftpd
+Obsoletes:	proftpd
+Obsoletes:	pure-ftpd
+Obsoletes:	wu-ftpd
 
 %description
 This is a Linux port of the BSD ftp server (ftpd). It doesn't have all

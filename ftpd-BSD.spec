@@ -1,7 +1,7 @@
 Summary:	OpenBSD's ftpd ported to Linux (with IPv6 support)
 Name:		ftpd-BSD
 Version:	0.3.1
-Release:	2
+Release:	3
 License:	BSD-like
 Group:		Networking/Daemons
 Group(pl):	Sieciowe/Serwery
@@ -45,7 +45,7 @@ wersji ftpd to 6.4, za¶ numer wersji tego portu to 0.3.0.
 %patch0 -p0
 
 %build
-( cd ftpd ; make )
+%{__make} -C ftpd OPT_CFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT

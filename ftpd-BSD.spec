@@ -2,7 +2,7 @@ Summary:	OpenBSD's ftpd ported to Linux (with IPv6 support)
 Summary(pl):	Port ftpd z OpenBSD dla Linuxa (z wsparciem do IPv6)
 Name:		ftpd-BSD
 Version:	0.3.2
-Release:	4
+Release:	5
 License:	BSD-like
 Group:		Networking/Daemons
 Group(de):	Netzwerkwesen/Server
@@ -49,7 +49,7 @@ wersji ftpd to 6.4, za¶ numer wersji tego portu to 0.3.0.
 %patch1 -p1
 
 %build
-%{__make} -C ftpd OPT_CFLAGS="$RPM_OPT_FLAGS"
+%{__make} -C ftpd OPT_CFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -57,13 +57,13 @@ install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8} \
 	$RPM_BUILD_ROOT%{_sysconfdir}/{ftpd,pam.d,sysconfig/rc-inetd} \
 	$RPM_BUILD_ROOT/home/ftp/{upload,pub}
 
-install -s ftpd/ftpd $RPM_BUILD_ROOT%{_sbindir}/ftpd-BSD
+install ftpd/ftpd $RPM_BUILD_ROOT%{_sbindir}/ftpd-BSD
 install ftpd/ftpd.8 $RPM_BUILD_ROOT%{_mandir}/man8/
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/ftpd
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/pam.d/ftp
 install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/ftpd/ftpusers
 
-gzip -9nf README $RPM_BUILD_ROOT%{_mandir}/man8/*
+gzip -9nf README
 
 %post
 if [ -f /var/lock/subsys/rc-inetd ]; then

@@ -1,9 +1,11 @@
 Summary:	OpenBSD's ftpd ported to Linux (with IPv6 support)
+Summary(pl):	Port ftpd z OpenBSD dla Linuxa (z wsparciem do IPv6)
 Name:		ftpd-BSD
 Version:	0.3.2
 Release:	4
 License:	BSD-like
 Group:		Networking/Daemons
+Group(de):	Netzwerkwesen/Server
 Group(pl):	Sieciowe/Serwery
 Source0:	ftp://quatramaran.ens.fr/pub/madore/ftpd-BSD/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd

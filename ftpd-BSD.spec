@@ -25,6 +25,7 @@ Obsoletes:	wu-ftpd
 Obsoletes:	proftpd
 Obsoletes:	heimdal-ftpd
 Obsoletes:	linux-ftpd
+Obsoletes:	bftpd
 
 %description
 This is a Linux port of the BSD ftp server (ftpd). It doesn't have all

@@ -14,7 +14,7 @@ Requires:	rc-inetd
 Requires:	inetdaemon
 Requires:	anonftp
 Provides:	ftpserver
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	wu-ftpd
 Obsoletes:	proftpd
 Obsoletes:	heimdal-ftpd

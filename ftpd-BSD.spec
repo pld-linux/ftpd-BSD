@@ -13,6 +13,7 @@ Source2:	%{name}.pamd
 Source3:	%{name}-ftpusers
 Patch0:		%{name}-anonuser.patch
 Patch1:		%{name}-paths.patch
+Patch2:		%{name}-username.patch
 Buildrequires:	libwrap-devel
 Buildrequires:	pam-devel
 Requires:	rc-inetd
@@ -47,6 +48,7 @@ wersji ftpd to 6.4, za¶ numer wersji tego portu to 0.3.0.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch1 -p2
 
 %build
 %{__make} -C ftpd OPT_CFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g}"

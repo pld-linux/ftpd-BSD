@@ -1,7 +1,7 @@
 Summary:	OpenBSD's ftpd ported to Linux (with IPv6 support)
 Name:		ftpd-BSD
 Version:	0.3.2
-Release:	3
+Release:	4
 License:	BSD-like
 Group:		Networking/Daemons
 Group(pl):	Sieciowe/Serwery
@@ -10,6 +10,7 @@ Source1:	%{name}.inetd
 Source2:	%{name}.pamd
 Source3:	%{name}-ftpusers
 Patch0:		%{name}-anonuser.patch
+Patch1:		%{name}-paths.patch
 Buildrequires:	libwrap-devel
 Buildrequires:	pam-devel
 Requires:	rc-inetd
@@ -43,19 +44,22 @@ wersji ftpd to 6.4, za¶ numer wersji tego portu to 0.3.0.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__make} -C ftpd OPT_CFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/{%{_sbindir},%{_mandir}/man8,etc/{pam.d,sysconfig/rc-inetd}}
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8} \
+	$RPM_BUILD_ROOT%{_sysconfdir}/{ftpd,pam.d,sysconfig/rc-inetd} \
+	$RPM_BUILD_ROOT/home/ftp/{upload,pub}
 
 install -s ftpd/ftpd $RPM_BUILD_ROOT%{_sbindir}/ftpd-BSD
 install ftpd/ftpd.8 $RPM_BUILD_ROOT%{_mandir}/man8/
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/ftpd
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/pam.d/ftp
-install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/ftpusers
+install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/ftpd/ftpusers
 
 gzip -9nf README $RPM_BUILD_ROOT%{_mandir}/man8/*
 
@@ -78,7 +82,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README.gz
 %attr(755,root,root) %{_sbindir}/ftpd-BSD
-%attr(640,root,root) %{_mandir}/man8/*
-%attr(640,root,root) %config %verify(not size mtime md5) /etc/pam.d/ftp
-%attr(640,root,root) %{_sysconfdir}/ftpusers
-%attr(640,root,root) /etc/sysconfig/rc-inetd/ftpd
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/pam.d/ftp
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ftpd/ftpusers
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/sysconfig/rc-inetd/ftpd
+%dir /home/ftp 
+%dir /home/ftp/pub 
+%attr(755,ftp,ftp) %dir /home/ftp/upload
+%{_mandir}/man8/*

@@ -7,4 +7,3 @@ USER=root
 SERVER=tcpd
 DAEMON=/usr/sbin/ftpd-BSD
 DAEMONARGS="-S -l"
-FAMILY=ipv4

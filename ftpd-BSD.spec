@@ -13,7 +13,7 @@ Source1:	%{name}.inetd
 Source2:	%{name}.pamd
 Source3:	%{name}-ftpusers
 Source4:	ftpusers.tar.bz2
-# Source4-md5: 76c80b6ec9f4d079a1e27316edddbe16
+# Source4-md5:	76c80b6ec9f4d079a1e27316edddbe16
 Patch0:		%{name}-anonuser.patch
 Patch1:		%{name}-paths.patch
 Patch2:		%{name}-username.patch

@@ -4,7 +4,7 @@ Version:	0.3.0
 Release:	1
 License:	BSD-like
 Group:		Networking/Daemons
-Source0:	%{name}-%{version}.tar.gz
+Source0:	ftp://quatramaran.ens.fr/pub/madore/ftpd-BSD/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Source2:	%{name}.pamd
 Source3:	%{name}-ftpusers

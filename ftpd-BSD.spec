@@ -21,23 +21,23 @@ Obsoletes:	proftpd
 Obsoletes:	heimdal-ftpd
 
 %description
-This is a Linux port of the BSD ftp server (ftpd). It doesn't have all the
-bells and whistles of wu-ftpd, but it is also probably less buggy and more
-secure (at least, it was certainly so before I ported it, and I hope I
-didn't mess things up *too* much).
+This is a Linux port of the BSD ftp server (ftpd). It doesn't have all
+the bells and whistles of wu-ftpd, but it is also probably less buggy
+and more secure (at least, it was certainly so before I ported it, and
+I hope I didn't mess things up *too* much).
 
-The source code was taken from the OpenBSD CVS as of 2000/01/23 (this is
-between releases 2.6 and 2.7). The ftpd version number is 6.4 and this
-port's version number is 0.3.0.
+The source code was taken from the OpenBSD CVS as of 2000/01/23 (this
+is between releases 2.6 and 2.7). The ftpd version number is 6.4 and
+this port's version number is 0.3.0.
 
 %description -l pl
-Pakiet ten zawiera linuksowy port serwera ftp BSD (ftpd). Nie zawiera on
-wszystkich wymy¶lnych elementów wu-ftpd, jest jednak prawdopodobniej mniej
-zapluskwiony i bardziej bezpieczny (w kazdym razie by³ takim zanim go
-przenios³em na Linuksa, i mam nadziejê, ¿e nie naba³agani³em *za bardzo*).
-Kod ¼ród³owy pochodzi z repozytorium CVS OpenBSD z dnia 2000/01/23 (tj.
-miêdzy wersj± 2.6 a 2.7). Numer wersji ftpd to 6.4, za¶ numer wersji tego
-portu to 0.3.0.
+Pakiet ten zawiera linuksowy port serwera ftp BSD (ftpd). Nie zawiera
+on wszystkich wymy¶lnych elementów wu-ftpd, jest jednak
+prawdopodobniej mniej zapluskwiony i bardziej bezpieczny (w kazdym
+razie by³ takim zanim go przenios³em na Linuksa, i mam nadziejê, ¿e
+nie naba³agani³em *za bardzo*). Kod ¼ród³owy pochodzi z repozytorium
+CVS OpenBSD z dnia 2000/01/23 (tj. miêdzy wersj± 2.6 a 2.7). Numer
+wersji ftpd to 6.4, za¶ numer wersji tego portu to 0.3.0.
 
 %prep
 %setup -q

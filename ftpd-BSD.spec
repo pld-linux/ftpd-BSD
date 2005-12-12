@@ -22,9 +22,9 @@ Patch4:		%{name}-no_libnsl.patch
 URL:		http://www.eleves.ens.fr:8080/home/madore/programs/#prog_ftpd-BSD
 BuildRequires:	libwrap-devel
 BuildRequires:	pam-devel
-Requires:	rc-inetd
 Requires:	inetdaemon
 Requires:	pam >= 0.77.3
+Requires:	rc-inetd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Provides:	ftpserver
 Obsoletes:	ftpserver
@@ -67,8 +67,8 @@ CVS OpenBSD z dnia 2000/07/07 (tj. po wersji 2.7). Numer wersji ftpd
 to 6.5, za¶ numer wersji tego portu to 0.3.2.
 
 Pakiet przychodzi z wy³±czonym anonimowym uploadem. Je¶li naprawdê
-chcesz go w³±czyæ - zmieñ uprawnienia do /home/services/ftp/upload
-na 0730.
+chcesz go w³±czyæ - zmieñ uprawnienia do /home/services/ftp/upload na
+0730.
 
 %prep
 %setup -q -n ftpd-bsd-%{version}

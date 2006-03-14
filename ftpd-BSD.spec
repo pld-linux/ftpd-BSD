@@ -22,14 +22,14 @@ Patch4:		%{name}-no_libnsl.patch
 URL:		http://www.eleves.ens.fr:8080/home/madore/programs/#prog_ftpd-BSD
 BuildRequires:	libwrap-devel
 BuildRequires:	pam-devel
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	inetdaemon
 Requires:	pam >= 0.77.3
 Requires:	rc-inetd
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Provides:	ftpserver
-Obsoletes:	ftpserver
 Obsoletes:	anonftp
 Obsoletes:	bftpd
+Obsoletes:	ftpserver
 Obsoletes:	glftpd
 Obsoletes:	heimdal-ftpd
 Obsoletes:	linux-ftpd
@@ -43,6 +43,7 @@ Obsoletes:	troll-ftpd
 Obsoletes:	vsftpd
 Obsoletes:	wu-ftpd
 Conflicts:	man-pages < 1.51
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This is a Linux port of the BSD FTP server (ftpd). It doesn't have all
@@ -99,15 +100,11 @@ bzip2 -dc %{SOURCE4} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
-fi
+%service -q rc-inetd reload
 
 %postun
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload
+if [ "$1" = 0 ]; then
+	%service -q rc-inetd reload
 fi
 
 %files

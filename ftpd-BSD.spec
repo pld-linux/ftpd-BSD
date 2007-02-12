@@ -1,7 +1,7 @@
 # TODO:
 # - SECURITY: http://securitytracker.com/alerts/2004/Aug/1010968.html
 Summary:	OpenBSD's ftpd ported to Linux (with IPv6 support)
-Summary(pl):	Port ftpd z OpenBSD dla Linuksa (z obs≥ug± IPv6)
+Summary(pl.UTF-8):   Port ftpd z OpenBSD dla Linuksa (z obs≈ÇugƒÖ IPv6)
 Name:		ftpd-BSD
 Version:	0.3.3
 Release:	11
@@ -58,17 +58,17 @@ version number is 0.3.2.
 Package comes with anonymous upload disabled. If you really want to
 enable it - chmod /home/services/ftp/upload to 0730.
 
-%description -l pl
+%description -l pl.UTF-8
 Pakiet ten zawiera linuksowy port serwera FTP BSD (ftpd). Nie zawiera
-on wszystkich wymy∂lnych elementÛw wu-ftpd, jest jednak
-prawdopodobniej mniej zapluskwiony i bardziej bezpieczny (w kaødym
-razie by≥ takim zanim go przenios≥em na Linuksa, i mam nadziejÍ, øe
-nie naba≥agani≥em *za bardzo*). Kod ºrÛd≥owy pochodzi z repozytorium
+on wszystkich wymy≈õlnych element√≥w wu-ftpd, jest jednak
+prawdopodobniej mniej zapluskwiony i bardziej bezpieczny (w ka≈ºdym
+razie by≈Ç takim zanim go przenios≈Çem na Linuksa, i mam nadziejƒô, ≈ºe
+nie naba≈Çagani≈Çem *za bardzo*). Kod ≈∫r√≥d≈Çowy pochodzi z repozytorium
 CVS OpenBSD z dnia 2000/07/07 (tj. po wersji 2.7). Numer wersji ftpd
-to 6.5, za∂ numer wersji tego portu to 0.3.2.
+to 6.5, za≈õ numer wersji tego portu to 0.3.2.
 
-Pakiet przychodzi z wy≥±czonym anonimowym uploadem. Je∂li naprawdÍ
-chcesz go w≥±czyÊ - zmieÒ uprawnienia do /home/services/ftp/upload na
+Pakiet przychodzi z wy≈ÇƒÖczonym anonimowym uploadem. Je≈õli naprawdƒô
+chcesz go w≈ÇƒÖczyƒá - zmie≈Ñ uprawnienia do /home/services/ftp/upload na
 0730.
 
 %prep
